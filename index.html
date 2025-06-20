@@ -45,7 +45,7 @@
             margin: auto;
             padding: 2rem;
         }
-        .project, .ui-section, .video-section, .about-section {
+        .project, .ui-section, .video-section, .about-section, .progress-section {
             background: #333;
             margin-bottom: 2rem;
             border-radius: 10px;
@@ -53,18 +53,18 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.4);
             transition: transform 0.3s ease;
         }
-        .project:hover, .ui-section:hover, .video-section:hover, .about-section:hover {
+        .project:hover, .ui-section:hover, .video-section:hover, .about-section:hover, .progress-section:hover {
             transform: scale(1.02);
         }
-        .project img, .ui-section img {
+        .project img, .ui-section img, .progress-section img {
             width: 100%;
             height: auto;
             display: block;
         }
-        .project-content, .ui-content, .video-content, .about-content {
+        .project-content, .ui-content, .video-content, .about-content, .progress-content {
             padding: 1.5rem;
         }
-        .project-content h2, .ui-content h2, .video-content h2, .about-content h2 {
+        .project-content h2, .ui-content h2, .video-content h2, .about-content h2, .progress-content h2 {
             margin-top: 0;
             color: #ffcc00;
         }
@@ -77,6 +77,17 @@
             max-width: 80%;
             margin: 10px 0;
             border: 3px solid #ff00ff;
+            border-radius: 10px;
+        }
+        .progress-gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .progress-gallery img {
+            max-width: 45%;
+            margin: 10px;
+            border: 3px solid #ff8c00;
             border-radius: 10px;
         }
         .video-content video {
@@ -122,6 +133,17 @@
             <p>3D Modeling (Blender), Texturing (Substance Painter), Game Design (Roblox Studio), UI/UX Design, Programming (Luau, Python, HTML, CSS, JS)</p>
         </section>
 
+        <div class="progress-section">
+            <div class="progress-content">
+                <h2>My Progress: Then vs Now</h2>
+                <p>Sometimes I look back at where I started and realize just how far I've come. On the left: one of my very first 3D models from last year (simple sword). On the right: my recent fully stylized sword project. Every model, every attempt, every bit of practice adds up.</p>
+                <div class="progress-gallery">
+                    <img src="old_sword.png" alt="Early Sword Model">
+                    <img src="sword.png" alt="Stylized Fantasy Sword">
+                </div>
+            </div>
+        </div>
+
         <div class="project">
             <img src="timberfall.png" alt="Timberfall">
             <div class="project-content">
@@ -143,14 +165,6 @@
             <div class="project-content">
                 <h2>College Building Recreation</h2>
                 <p>Blender project recreating the college I'm hoping to attend one day. Mainly focused on practicing accurate modeling, architectural detail, and lighting design. Really happy with how this one turned out as it taught me a lot about reference-based modeling.</p>
-            </div>
-        </div>
-
-        <div class="project">
-            <img src="sword.png" alt="Stylized Fantasy Sword">
-            <div class="project-content">
-                <h2>Stylized Fantasy Sword</h2>
-                <p>Made this sword just for fun. I wanted to challenge myself with something a bit more detailed and stylized, mixing metallic shapes with glowing accents. Fully modeled in Blender and textured with Substance Painter.</p>
             </div>
         </div>
 
