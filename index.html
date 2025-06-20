@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry "Qwacky89" Portfolio</title>
+    <title>Qwacky89 Portfolio</title>
     <style>
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -45,7 +45,7 @@
             margin: auto;
             padding: 2rem;
         }
-        .project, .ui-section, .video-section, .about-section, .progress-section {
+        .section {
             background: #333;
             margin-bottom: 2rem;
             border-radius: 10px;
@@ -53,25 +53,31 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.4);
             transition: transform 0.3s ease;
         }
-        .project:hover, .ui-section:hover, .video-section:hover, .about-section:hover, .progress-section:hover {
+        .section:hover {
             transform: scale(1.02);
         }
-        .project img, .ui-section img, .progress-section img {
+        .section img {
             width: 100%;
             height: auto;
             display: block;
         }
-        .project-content, .ui-content, .video-content, .about-content, .progress-content {
+        .content {
             padding: 1.5rem;
         }
-        .project-content h2, .ui-content h2, .video-content h2, .about-content h2, .progress-content h2 {
+        .content h2 {
             margin-top: 0;
             color: #ffcc00;
         }
-        .ui-gallery {
+        .gallery {
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .gallery img {
+            max-width: 45%;
+            margin: 10px;
+            border: 3px solid #ff8c00;
+            border-radius: 10px;
         }
         .ui-gallery img {
             max-width: 80%;
@@ -79,18 +85,7 @@
             border: 3px solid #ff00ff;
             border-radius: 10px;
         }
-        .progress-gallery {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-        }
-        .progress-gallery img {
-            max-width: 45%;
-            margin: 10px;
-            border: 3px solid #ff8c00;
-            border-radius: 10px;
-        }
-        .video-content video {
+        video {
             width: 100%;
             border-radius: 10px;
         }
@@ -120,10 +115,10 @@
     </header>
     <div class="container">
 
-        <div class="about-section">
-            <div class="about-content">
+        <div class="section">
+            <div class="content">
                 <h2>About Me</h2>
-                <p>Hey, I'm Harry, better known as "Qwacky89" online. I'm 16 years old and I've been obsessed with game development and 3D modeling since 2019. What started as just messing around in Roblox Studio and Blender quickly became a full-on passion. I'm always trying new ideas, learning new skills, and figuring out how to make cooler and more polished projects each time. Honestly, I jump between projects a lot (my brain doesn't like to sit still), but every single one teaches me something valuable that I bring into the next.</p>
+                <p>Hey, I'm Harry. I'm 16 years old and I've been obsessed with game development and 3D modeling since 2019. What started as just messing around in Roblox Studio and Blender quickly became a full-on passion. I'm always trying new ideas, learning new skills, and figuring out how to make cooler and more polished projects each time. Honestly, I jump between projects a lot (my brain doesn't like to sit still), but every single one teaches me something valuable that I bring into the next.</p>
                 <p>For years I was just exploring, learning the ropes—building random systems, creating mechanics, experimenting with UI, and slowly getting better at design and polish. I went through burnout phases and a lot of unfinished ideas, but with each failure I learned how to plan better and work smarter. Recently though, everything clicked. My game "Timberfall" is my first fully built project that I actually want to release, and it's proof to myself that I've come a long way since the start.</p>
             </div>
         </div>
@@ -133,70 +128,60 @@
             <p>3D Modeling (Blender), Texturing (Substance Painter), Game Design (Roblox Studio), UI/UX Design, Programming (Luau, Python, HTML, CSS, JS)</p>
         </section>
 
-        <div class="progress-section">
-            <div class="progress-content">
-                <h2>My Progress: Then vs Now</h2>
-                <p>Sometimes I look back at where I started and realize just how far I've come. On the left: one of my very first 3D models from last year (simple sword). On the right: my recent fully stylized sword project. Every model, every attempt, every bit of practice adds up.</p>
-                <div class="progress-gallery">
+        <div class="section">
+            <div class="content">
+                <h2>Roblox Game Progress: Then vs Now</h2>
+                <p>When I first started making Roblox games seriously, I jumped straight into creating a slime-eating game. It had some fun mechanics but I quickly ran into messy systems, burnout, and lots of bugs. Fast forward to today: my newest game Timberfall shows how much I’ve grown in planning, clean systems, and actually finishing a full game properly.</p>
+                <div class="gallery">
+                    <img src="slime_game.png" alt="Old Slime Game">
+                    <img src="timberfall.png" alt="Timberfall">
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="content">
+                <h2>3D Modeling Progress: Then vs Now</h2>
+                <p>This is probably my favorite part to look back on. My first sword model was super simple (basically a cylinder). Compare that to my more recent stylized fantasy sword — every bit of practice and every failed attempt over the last year added up to this.</p>
+                <div class="gallery">
                     <img src="old_sword.png" alt="Early Sword Model">
                     <img src="sword.png" alt="Stylized Fantasy Sword">
                 </div>
             </div>
         </div>
 
-        <div class="project">
-            <img src="timberfall.png" alt="Timberfall">
-            <div class="project-content">
-                <h2>Timberfall (2025)</h2>
-                <p>Timberfall is my first fully developed and properly managed game. It's heavily inspired by old school Roblox hits like Lumber Tycoon 2, but built with everything I've learned over years of experimenting. For the first time, I sat down, properly planned systems, made flowcharts, blocked out features, and actually finished the thing! It's not huge or flashy, but it's functional, fun, and polished.</p>
-            </div>
-        </div>
-
-        <div class="project">
-            <img src="squidgame.png" alt="Squid Game Lobby">
-            <div class="project-content">
-                <h2>Squid Game Lobby</h2>
-                <p>This was my attempt to create a Squid Game multiplayer lobby for a solo project. The focus was building a large-scale environment that still feels like part of the show, while experimenting with lighting, level composition, and atmosphere.</p>
-            </div>
-        </div>
-
-        <div class="project">
-            <img src="college.png" alt="College Recreation">
-            <div class="project-content">
-                <h2>College Building Recreation</h2>
-                <p>Blender project recreating the college I'm hoping to attend one day. Mainly focused on practicing accurate modeling, architectural detail, and lighting design. Really happy with how this one turned out as it taught me a lot about reference-based modeling.</p>
-            </div>
-        </div>
-
-        <div class="project">
-            <img src="house.png" alt="Stylized Urban House">
-            <div class="project-content">
-                <h2>Stylized Urban House</h2>
-                <p>Saw a cool house on Pinterest and thought: "I wanna make that." This was a practice in hand-painted texturing and building a cozy, slightly stylized urban scene. Loved experimenting with lighting for the nighttime vibe.</p>
-            </div>
-        </div>
-
-        <div class="ui-section">
-            <div class="ui-content">
-                <h2>UI/UX Examples</h2>
-                <p>Over the years I've experimented a ton with UI design inside my games, trying to make interfaces that fit the style and vibe of the games I'm building. Here's a few snapshots from my Squid Game prototype and my early slime eating game project.</p>
-                <div class="ui-gallery">
-                    <img src="ui_example1.png" alt="Squid Game UI Example">
-                    <img src="ui_example2.png" alt="Game Passes UI">
-                    <img src="ui_example3.png" alt="Shop UI">
-                    <img src="ui_example4.png" alt="Packs UI">
+        <div class="section">
+            <div class="content">
+                <h2>UI/UX Progress: Then vs Now</h2>
+                <p>UI was something I really struggled with early on. My first interfaces were very basic, clunky, and pretty ugly if I'm honest. Over time I got better at making fun, themed UI that matches the style of my games. Here's a side-by-side of my earlier basic UI and some of the more polished stuff I'm creating now.</p>
+                <div class="gallery">
+                    <img src="old_ui.png" alt="Old Basic UI">
+                    <img src="ui_example3.png" alt="Polished Shop UI">
                 </div>
             </div>
         </div>
 
-        <div class="video-section">
-            <div class="video-content">
+        <div class="section">
+            <div class="content">
                 <h2>Timberfall Gameplay Preview</h2>
                 <p>Here's a quick gameplay showcase of Timberfall in action. The systems are simple but polished, and seeing it fully functional has been super satisfying after years of learning and failing.</p>
                 <video controls>
                     <source src="timberfall_gameplay.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="content">
+                <h2>UI/UX Full Showcase</h2>
+                <p>Over the years I've experimented a ton with UI design inside my games, trying to make interfaces that fit the style and vibe of the games I'm building. Here's a few snapshots from my Squid Game prototype and my slime eating game project.</p>
+                <div class="ui-gallery">
+                    <img src="ui_example1.png" alt="Squid Game UI Example">
+                    <img src="ui_example2.png" alt="Game Passes UI">
+                    <img src="ui_example3.png" alt="Shop UI">
+                    <img src="ui_example4.png" alt="Packs UI">
+                </div>
             </div>
         </div>
     </div>
