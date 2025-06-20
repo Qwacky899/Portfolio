@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harry "Qwacky89" Portfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #1e1e1e;
+            color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background: #272727;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
+            position: relative;
+        }
+        .profile-pic {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid #ff8c00;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #444;
+        }
+        header h1 {
+            margin-top: 180px;
+            font-size: 2.5rem;
+            color: #ff8c00;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #ddd;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 2rem;
+        }
+        .project {
+            background: #333;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
+            transition: transform 0.3s ease;
+        }
+        .project:hover {
+            transform: scale(1.02);
+        }
+        .project img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .project-content {
+            padding: 1.5rem;
+        }
+        .project-content h2 {
+            margin-top: 0;
+            color: #ffcc00;
+        }
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background: #272727;
+            color: #aaa;
+            margin-top: 2rem;
+        }
+        .skills {
+            background: #333;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 10px;
+        }
+        .skills h2 {
+            color: #ffcc00;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="profile.png" alt="Profile Picture" class="profile-pic">
+        <h1>Harry "Qwacky89"</h1>
+        <p>3D Artist & Game Developer | Passionate about Worldbuilding & Systems Design</p>
+    </header>
+    <div class="container">
+        <section class="skills">
+            <h2>Skills</h2>
+            <p>3D Modeling (Blender), Texturing (Substance Painter), Game Design (Roblox Studio), UI/UX Design, Programming (Luau, Python, HTML, CSS, JS)</p>
+        </section>
+
+        <div class="project">
+            <img src="timberfall.png" alt="Timberfall">
+            <div class="project-content">
+                <h2>Timberfall (2025)</h2>
+                <p>Inspired by Lumber Tycoon 2, Timberfall is my first fully developed game built with planning and polish. Players harvest and sell wood in a functional, simple tycoon system. Developed in Roblox Studio using Blender for assets.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="squidgame.png" alt="Squid Game Lobby">
+            <div class="project-content">
+                <h2>Squid Game Lobby</h2>
+                <p>A large-scale multiplayer lobby environment designed for a solo Roblox Squid Game project. Features accurate bunk bed structures and immersive lighting inspired by the show's design.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="college.png" alt="College Recreation">
+            <div class="project-content">
+                <h2>College Building Recreation</h2>
+                <p>A Blender project recreating the college I'm working towards attending, focused on architecture, environment modeling, and lighting practice.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="sword.png" alt="Stylized Fantasy Sword">
+            <div class="project-content">
+                <h2>Stylized Fantasy Sword</h2>
+                <p>Created for fun, this sword features stylized fantasy design with gold accents and crystal elements. Modeled in Blender and textured in Substance Painter.</p>
+            </div>
+        </div>
+
+        <div class="project">
+            <img src="house.png" alt="Stylized Urban House">
+            <div class="project-content">
+                <h2>Stylized Urban House</h2>
+                <p>Inspired by a Pinterest reference, this hand-painted urban house model explores lighting, detail, and stylized architectural design in Blender.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        Contact: harry.smith7624@gmail.com
+    </footer>
+</body>
+</html>
