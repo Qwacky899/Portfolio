@@ -21,7 +21,6 @@
             padding: 0;
         }
 
-        /* Custom Scrollbar */
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -104,12 +103,7 @@
             letter-spacing: -2px;
             margin-bottom: 1.5rem;
             line-height: 1.1;
-        }
-
-        .text-gradient {
-            background: linear-gradient(90deg, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: var(--text);
         }
 
         .hero p {
@@ -252,7 +246,6 @@
             margin: 0 auto;
         }
 
-        /* --- Scroll Reveal Animation Classes --- */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -264,7 +257,6 @@
             transform: translateY(0);
         }
 
-        /* Modal styling */
         .modal {
             display: none;
             position: fixed;
@@ -362,7 +354,7 @@
     </nav>
 
     <div class="hero reveal">
-        <h1><span class="text-gradient">3D Artist</span> &<br>Game Developer.</h1>
+        <h1>3D Artist &<br>Game Developer.</h1>
         <p>Specializing in hard-surface modeling, high-fidelity texturing, and game mechanics.</p>
     </div>
 
@@ -458,13 +450,12 @@
     </div>
 
     <script>
-        // --- Scroll Reveal Animation Logic ---
         function reveal() {
             var reveals = document.querySelectorAll(".reveal");
             for (var i = 0; i < reveals.length; i++) {
                 var windowHeight = window.innerHeight;
                 var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; // Trigger distance
+                var elementVisible = 100; 
 
                 if (elementTop < windowHeight - elementVisible) {
                     reveals[i].classList.add("active");
@@ -472,9 +463,8 @@
             }
         }
         window.addEventListener("scroll", reveal);
-        reveal(); // Trigger once on load
+        reveal(); 
 
-        // --- Image Modal Logic ---
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modalImage");
         const captionText = document.getElementById("caption");
@@ -488,11 +478,10 @@
                 
                 if(img) {
                     modal.style.display = "flex";
-                    // Slight delay allows display: flex to apply before opacity transition starts
                     setTimeout(() => modal.classList.add("active"), 10);
                     modalImg.src = img.src;
                     captionText.innerText = title ? title.innerText : "";
-                    document.body.style.overflow = "hidden"; // Stop background scrolling
+                    document.body.style.overflow = "hidden"; 
                 }
             });
         });
@@ -501,20 +490,18 @@
             modal.classList.remove("active");
             setTimeout(() => {
                 modal.style.display = "none";
-                document.body.style.overflow = "auto"; // Re-enable background scrolling
-            }, 300); // Matches the CSS transition time
+                document.body.style.overflow = "auto"; 
+            }, 300); 
         };
 
         closeBtn.addEventListener("click", closeModal);
 
-        // Close when clicking outside the image
         modal.addEventListener("click", (e) => {
             if (e.target === modal) {
                 closeModal();
             }
         });
 
-        // Close with escape key
         document.addEventListener("keydown", (e) => {
             if (e.key === "Escape" && modal.style.display === "flex") {
                 closeModal();
