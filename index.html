@@ -1,260 +1,206 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
+    <title>Harry Smith | Portfolio</title>
     <style>
+        :root {
+            --accent: #ff8c00;
+            --bg: #121212;
+            --card-bg: #1e1e1e;
+            --text: #f5f5f5;
+        }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #1e1e1e;
-            color: #f5f5f5;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg);
+            color: var(--text);
             margin: 0;
-            padding: 0;
+            line-height: 1.6;
         }
+
         header {
-            background: #272727;
-            padding: 2rem;
+            padding: 4rem 2rem;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.5);
-            position: relative;
+            background: linear-gradient(to bottom, #1a1a1a, var(--bg));
         }
+
         .profile-pic {
-            width: 150px;
-            height: 150px;
+            width: 120px;
+            height: 120px;
             border-radius: 50%;
+            border: 3px solid var(--accent);
+            margin-bottom: 1rem;
             object-fit: cover;
-            border: 5px solid #ff8c00;
-            position: absolute;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #444;
         }
-        header h1 {
-            margin-top: 180px;
-            font-size: 2.5rem;
-            color: #ff8c00;
+
+        h1 { margin: 0; font-size: 3rem; letter-spacing: -1px; color: var(--accent); }
+        .tagline { font-size: 1.2rem; color: #888; margin-top: 0.5rem; }
+
+        .container { max-width: 1100px; margin: auto; padding: 0 2rem; }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
         }
-        header p {
-            font-size: 1.2rem;
-            color: #ddd;
-        }
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 2rem;
-        }
-        .section {
-            background: #333;
-            margin-bottom: 2rem;
-            border-radius: 10px;
+
+        .hero-item {
+            background: var(--card-bg);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.4);
-            transition: transform 0.3s ease;
+            border: 1px solid #333;
+            transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
-        .section:hover {
-            transform: scale(1.02);
-        }
-        .section img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-        .content {
+
+        .hero-item:hover { transform: translateY(-10px); border-color: var(--accent); }
+        .hero-item img, .hero-item video { width: 100%; height: 250px; object-fit: cover; }
+        
+        .hero-content { padding: 1.5rem; }
+        .hero-content h3 { margin: 0; color: var(--accent); font-size: 1.4rem; }
+        .hero-content p { font-size: 0.9rem; color: #bbb; margin: 0.5rem 0 0; }
+
+        .skills-bar {
+            background: var(--card-bg);
             padding: 1.5rem;
-        }
-        .content h2 {
-            margin-top: 0;
-            color: #ffcc00;
-        }
-        .ui-gallery {
+            border-radius: 12px;
             display: flex;
-            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 3rem 0;
+        }
+
+        .skill-tag {
+            background: #2a2a2a;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid #444;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            aspect-ratio: 1/1;
+        }
+
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: 0.3s; }
+        .gallery-item:hover img { filter: brightness(0.4); scale: 1.1; }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
             align-items: center;
-        }
-        .ui-gallery img {
-            max-width: 80%;
-            margin: 10px 0;
-            border: 3px solid #ff00ff;
-            border-radius: 10px;
-        }
-        video {
-            width: 100%;
-            border-radius: 10px;
-        }
-        footer {
+            justify-content: center;
+            opacity: 0;
+            transition: 0.3s;
+            font-weight: bold;
             text-align: center;
-            padding: 1rem;
-            background: #272727;
-            color: #aaa;
-            margin-top: 2rem;
+            padding: 10px;
         }
-        .skills {
-            background: #333;
-            padding: 1rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-        }
-        .skills h2 {
-            color: #ffcc00;
+
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+
+        footer { text-align: center; padding: 4rem 2rem; color: #666; font-size: 0.9rem; }
+        
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .hero-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <header>
-        <img src="profile.png" alt="Profile Picture" class="profile-pic">
-        <h1>Harry Smith</h1>
-        <p>3D Artist & Game Developer | Passionate about Game Design,Modelling and Media</p>
-    </header>
-    <div class="container">
 
-```
-    <div class="section">
-        <div class="content">
-            <h2>About Me</h2>
-            <p>Hey, I'm Harry. I'm 16 years old and I've been obsessed with game development and 3D modeling since 2019. What started as just messing around in Roblox Studio and Blender quickly became a full-on passion. I'm always trying new ideas, learning new skills, and figuring out how to make cooler and more polished projects each time, I jump between projects a lot (too many new ideas), but every single one teaches me something valuable that I bring into the next.</p>
-            <p>For years I was just exploring, learning the ropes—building random systems, creating mechanics, experimenting with UI, and slowly getting better at design and polish. I went through burnout phases and a lot of unfinished ideas, but with each failure I learned how to plan better and work smarter. Recently  though, everything clicked. My game "Timberfall" is my first fully built project that I actually want to release, and it's proof to myself that I've come a long way since the start.</p>
-        </div>
-    </div>
+<header>
+    <img src="profile.png" alt="Harry Smith" class="profile-pic">
+    <h1>Harry Smith</h1>
+    <p class="tagline">3D Artist & Game Developer | Specialized in High-Fidelity Product Visualization</p>
+</header>
 
-    <section class="skills">
-        <h2>Skills</h2>
-        <p>3D Modeling (Blender), Texturing (Substance Painter), Game Design (Roblox Studio), UI/UX Design, Programming (Luau, Python, HTML, CSS)</p>
-    </section>
-
-    <div class="section">
-        <div class="content">
-            <h2>Vilanelle Perfume (Killing Eve) Set</h2>
-            <div class="ui-gallery">
-                <img src="VilanelleBox.png" alt="Vilanelle In a box recreation from killing eve">
-                <img src="VilanelleStudio.png" alt="Vilanelle studio render">
+<div class="container">
+    
+    <h2>Featured Projects</h2>
+    <div class="hero-grid">
+        <div class="hero-item">
+            <img src="VilanelleBox.png" alt="La Vilanelle Perfume">
+            <div class="hero-content">
+                <h3>La Villanelle Set</h3>
+                <p>Character-driven product visualization from Killing Eve. Focused on glass refraction, gold metallics, and cinematic lighting.</p>
             </div>
         </div>
-    </div>
 
-    <div class="section">
-        <div class="content">
-            <h2>Squid Game Lobby</h2>
-            <img src="squidgame.png" alt="Squid Game Lobby">
-            <p>This was my attempt to create a Squid Game multiplayer lobby for a solo project. Also tried experimenting with lighting, level composition, and atmosphere.</p>
-        </div>
-    </div>
-
-     <div class="section">
-        <div class="content">
-            <h2>Simulator Set for my distopian game</h2>
-            <img src="SimulatorSet.png" alt="Simulator Set">
-            <p>This was a set from the tools in one of my games focused on a distopian regime</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="content">
-            <h2>College Building Recreation</h2>
-            <img src="college.png" alt="College Recreation">
-            <p>Blender project recreating the college I hope to attend one day. Mainly focused on practising accurate modelling, architectural detail, and lighting design. Really happy with how this one turned out as it taught me a lot about reference-based modeling.</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="content">
-            <h2>Stylized Fantasy Sword</h2>
-            <img src="sword.png" alt="Stylized Fantasy Sword">
-            <p>Made this sword just for fun. I wanted to challenge myself with something a bit more detailed and stylized.</p>
-        </div>
-          <div class="content">
-            <h2>Another sword</h2>
-            <img src="sword2.png" alt="Another sword"> 
-            <p>Another sword for fun (do like my swords)</p>
-        </div>
-         <div class="content">
-            <h2>Quick random little knife</h2>
-            <img src="Knife1.png" alt="Knife"> 
-            <p>Just modelled a knife and was playing about with it in substance painter</p>
-        </div>
-    </div>
-             
-        
-        <div class="section">
-        <div class="content">
-            <h2>Modern House by lake</h2>
-            <img src="H1.png" alt="Modern Lake House">
-            <p>another recreation of some modern architecture stock photo I found</p>
-        </div>
-    </div>
-
-            <div class="section">
-        <div class="content">
-            <h2>My First Commission</h2>
-            <img src="C1.png" alt="First commission">
-            <p>Don't really know what to say about this one other than it was my first commission</p>
-        </div>
-    </div>
-
-        <div class="section">
-        <div class="content">
-            <h2>Adobe Architecture Recreation</h2>
-            <img src="Arch2.png" alt="My Recreation">
-            <p>Found this on a stock image site and thought it would be a nice quick fun little project and it turned out quite well</p>
-        </div>
-    </div>
-
-    <div class="section">
-        <div class="content">
-            <h2>Stylized Urban House</h2>
-            <img src="house.png" alt="Stylized Urban House">
-            <p>Saw a cool house on Pinterest and thought: "I wanna make that." This was a practice in hand-painted texturing and building a cozy, slightly stylized urban scene. Loved experimenting with lighting for the nighttime vibe.</p>
-        </div>
-    </div>
-    <div class="section">
-        <div class="content">
-            <h2>Robot</h2>
-            <img src="Bot.png" alt="Bot">
-            <p>Saw someone looking for bots commissioned along with a reference image of a few robots so then I thought It would be fun and cool to just make one so I did and here is the cute little guy</p>
-        </div>
-    </div>
-        <div class="section">
-        <div class="content">
-            <h2>Solid Gold Musket</h2>
-            <img src="Musket.png" alt="Solid Gold Musket">
-            <p>it was a random Friday night when I decided to try making a musket was a very quick job about 10-15 mins and turned out a lot better than a thought (Pinky promise, I like the gold and it wasn't just that I couldn't be asked to texture it)</p>
-        </div>
-    </div>
-
-
-    <div class="section">
-        <div class="content">
-            <h2>UI/UX Examples</h2>
-            <p>Over the years I've experimented a ton with UI design inside my games, trying to make interfaces that fit the style and vibe of the games I'm building. Here's a few snapshots from my Squid Game prototype and my early slime eating game project.</p>
-            <div class="ui-gallery">
-                <img src="ui_example1.png" alt="Squid Game UI Example">
-                <img src="ui_example2.png" alt="Game Passes UI">
-                <img src="ui_example3.png" alt="Shop UI">
-                <img src="ui_example4.png" alt="Packs UI">
+        <div class="hero-item">
+            <img src="Prada.png" alt="Prada Paradoxe">
+            <div class="hero-content">
+                <h3>Prada Paradoxe</h3>
+                <p>Luxury render exploring triangular geometry and subtle liquid volume absorption.</p>
             </div>
         </div>
-    </div>
 
-    <div class="section">
-        <div class="content">
-            <h2>Timberfall Gameplay Preview</h2>
-            <p>Here's a quick gameplay showcase of Timberfall in action. The systems are simple but polished, and seeing it fully functional has been super satisfying after years of learning and failing.</p>
-            <video controls>
+        <div class="hero-item">
+            <img src="RazorSiren.png" alt="Razer Seiren">
+            <div class="hero-content">
+                <h3>Razer Seiren</h3>
+                <p>Hard-surface modeling study focusing on micro-mesh textures and electronic materials.</p>
+            </div>
+        </div>
+
+        <div class="hero-item">
+            <video autoplay muted loop>
                 <source src="timberfall_gameplay.mp4" type="video/mp4">
-                Your browser does not support the video tag.
             </video>
+            <div class="hero-content">
+                <h3>Timberfall</h3>
+                <p>Personal game project showcasing Luau programming, system design, and environmental polish.</p>
+            </div>
+        </div>
+
+        <div class="hero-item">
+            <img src="college.png" alt="College Recreation">
+            <div class="hero-content">
+                <h3>Architecture Study</h3>
+                <p>Recreation focusing on architectural lighting, modular assets, and accurate reference modeling.</p>
+            </div>
         </div>
     </div>
+
+    <div class="skills-bar">
+        <span class="skill-tag">Blender</span>
+        <span class="skill-tag">Substance Painter</span>
+        <span class="skill-tag">Roblox Studio (Luau)</span>
+        <span class="skill-tag">Python</span>
+        <span class="skill-tag">Lighting Design</span>
+        <span class="skill-tag">UI/UX</span>
+    </div>
+
+    <h2>Gallery & Studies</h2>
+    <div class="gallery-grid">
+        <div class="gallery-item"><img src="sword.png"><div class="gallery-overlay">Fantasy Sword</div></div>
+        <div class="gallery-item"><img src="Bot.png"><div class="gallery-overlay">Robot Unit</div></div>
+        <div class="gallery-item"><img src="house.png"><div class="gallery-overlay">Stylized Urban</div></div>
+        <div class="gallery-item"><img src="SimulatorSet.png"><div class="gallery-overlay">Dystopian Set</div></div>
+        <div class="gallery-item"><img src="Knife1.png"><div class="gallery-overlay">Tactical Knife</div></div>
+        <div class="gallery-item"><img src="squidgame.png"><div class="gallery-overlay">Level Design</div></div>
+        <div class="gallery-item"><img src="Musket.png"><div class="gallery-overlay">Gold Musket</div></div>
+        <div class="gallery-item"><img src="H1.png"><div class="gallery-overlay">Modern Lake House</div></div>
+    </div>
+
 </div>
+
 <footer>
-    Contact: harry.smith7624@gmail.com
+    harry.smith7624@gmail.com
 </footer>
-```
 
 </body>
 </html>
-
-
-
