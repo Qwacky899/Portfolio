@@ -21,6 +21,11 @@
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 120px; /* Prevents nav from overlapping section titles */
+        }
+
         ::-webkit-scrollbar {
             width: 10px;
         }
@@ -47,7 +52,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 4rem;
+            padding: 1.5rem 4rem;
             position: fixed;
             width: 100%;
             top: 0;
@@ -72,6 +77,24 @@
             border-radius: 50%;
             border: 2px solid var(--accent);
             object-fit: cover;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text);
         }
 
         .contact-btn {
@@ -120,6 +143,21 @@
             border-bottom: 1px solid var(--border);
             max-width: 1400px;
             letter-spacing: -0.5px;
+        }
+
+        .subsection-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin: 0 4rem 1.5rem;
+            max-width: 1400px;
+            color: var(--accent);
+        }
+
+        /* Center subsections based on container max-width */
+        @media (min-width: 1480px) {
+            .subsection-title {
+                margin: 0 auto 1.5rem;
+            }
         }
 
         .bento-grid {
@@ -350,13 +388,15 @@
             .span-2-row { grid-row: span 1; }
             .hero h1 { font-size: 4rem; }
             .ui-grid { grid-template-columns: repeat(2, 1fr); }
+            .nav-links { display: none; } /* Hide inner links on mobile for cleaner look */
         }
 
         @media (max-width: 768px) {
-            nav, .hero, .section-title, .bento-grid, .scripting-grid, .gallery-grid, .ui-grid {
+            nav, .hero, .section-title, .subsection-title, .bento-grid, .scripting-grid, .gallery-grid, .ui-grid {
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
             }
+            .subsection-title { margin-left: 1.5rem; margin-right: 1.5rem; }
             .scripting-grid { grid-template-columns: 1fr; }
             .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; }
             .hero { padding-top: 10rem; }
@@ -372,6 +412,15 @@
             <img src="profile.png" alt="HS">
             Harry Smith
         </div>
+        
+        <!-- Interactive Navigation Links -->
+        <div class="nav-links">
+            <a href="#top-projects">Top Projects</a>
+            <a href="#scripting">Scripting</a>
+            <a href="#props">Props & Environments</a>
+            <a href="#ui-design">Interface Design</a>
+        </div>
+
         <a href="mailto:harry.smith7624@gmail.com" class="contact-btn">Get in touch</a>
     </nav>
 
@@ -380,7 +429,8 @@
         <p>17 Year old aspiring developer.</p>
     </div>
 
-    <div class="section-title reveal" style="margin-top: 0;">Top Projects</div>
+    <!-- Top Projects Section -->
+    <div id="top-projects" class="section-title reveal" style="margin-top: 0;">Top Projects</div>
     <div class="bento-grid">
          <div class="card span-2-col span-2-row reveal">
             <img src="Needoh1.png" alt="Needoh">
@@ -439,14 +489,62 @@
         </div>
     </div>
 
-    <div class="section-title reveal">Lua Scripting & Game Development</div>
+    <!-- Scripting Section -->
+    <div id="scripting" class="section-title reveal">Lua Scripting & Game Development</div>
+    
+    <!-- Subsection 1: Complete Pet System -->
+    <div class="subsection-title reveal">Complete Pet System Core Mechanics</div>
+    <div class="scripting-grid">
+        <div class="video-card reveal">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/ecz7FouUMWk" title="Pet Trading System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Pet Trading System</h3>
+                <p>Secure player-to-player trading interface built with modular Lua architecture.</p>
+            </div>
+        </div>
+
+        <div class="video-card reveal">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/1q-68IiMzbM" title="Egg Hatching System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Egg Hatching System</h3>
+                <p>Smooth unboxing animations with integrated rarity scaling and data management.</p>
+            </div>
+        </div>
+
+        <div class="video-card reveal">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/6jjvNeK5CwY" title="Backpack / Inventory System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Backpack / Inventory</h3>
+                <p>Dynamic grid-based inventory with real-time equip, unequip, and sorting logic.</p>
+            </div>
+        </div>
+
+        <div class="video-card reveal">
+            <div class="video-wrapper">
+                <iframe src="https://www.youtube.com/embed/78Xaa6-LSWk" title="Breakables System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div class="video-info">
+                <h3>Breakables System</h3>
+                <p>Optimized physics and interactive destruction system for world engagement.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Subsection 2: Standalone Systems -->
+    <div class="subsection-title reveal">Standalone Systems & UI Logic</div>
     <div class="scripting-grid">
         <div class="video-card reveal">
             <div class="video-wrapper">
                 <iframe src="https://www.youtube.com/embed/lSP9uoyIPro" title="Simple Pet System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="video-info">
-                <h3>Simple Pet System</h3>
+                <h3>Pet Following Mechanics</h3>
                 <p>Developed in under 24 hours utilizing professional, highly optimized system architecture.</p>
             </div>
         </div>
@@ -457,18 +555,16 @@
             </div>
             <div class="video-info">
                 <h3>Dynamic Main Menu</h3>
-                <p>An interactive, dynamically structured main menu user interface showcasing clean transitions and logic.</p>
+                <p>An interactive, dynamically structured main menu user interface showcasing clean transitions.</p>
             </div>
         </div>
     </div>
 
-    <div class="section-title reveal">Props & Environments</div>
+    <!-- Props Section -->
+    <div id="props" class="section-title reveal">Props & Environments</div>
     <div class="gallery-grid">
-        <!-- New AK47 images added here -->
         <div class="card reveal"><img src="ak47-post.png" alt="AK47 Post Effects"><div class="card-info"><div class="card-title">AK47 (Post Effects in Pixlr)</div></div></div>
         <div class="card reveal"><img src="ak47-pre.png" alt="AK47 Pre Render"><div class="card-info"><div class="card-title">AK47 (Pre-Render)</div></div></div>
-        
-        <!-- Existing Gallery Items -->
         <div class="card reveal"><img src="SimulatorSet.png" alt="Simulator Set"><div class="card-info"><div class="card-title">Simulator Set for distopian game</div></div></div>
         <div class="card reveal"><img src="sword.png" alt="Stylized Fantasy Sword"><div class="card-info"><div class="card-title">Stylized Fantasy Sword</div></div></div>
         <div class="card reveal"><img src="sword2.png" alt="Another sword"><div class="card-info"><div class="card-title">Another sword</div></div></div>
@@ -481,7 +577,8 @@
         <div class="card reveal"><img src="Musket.png" alt="Solid Gold Musket"><div class="card-info"><div class="card-title">Solid Gold Musket</div></div></div>
     </div>
 
-    <div class="section-title reveal">Interface Design</div>
+    <!-- UI Section -->
+    <div id="ui-design" class="section-title reveal">Interface Design</div>
     <div class="ui-grid">
         <div class="card reveal"><img src="ui_example1.png" alt="Squid Game UI Example"><div class="card-info"><div class="card-title">Squid Game UI Example</div></div></div>
         <div class="card reveal"><img src="ui_example2.png" alt="Game Passes UI"><div class="card-info"><div class="card-title">Game Passes UI</div></div></div>
