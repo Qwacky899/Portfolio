@@ -42,8 +42,8 @@
   .site-header { position: sticky; z-index: 40; top: 0; background: rgba(11,14,16,.88); border-bottom: 1px solid var(--rule); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); }
   .header-inner { min-height: 80px; display: flex; align-items: center; gap: 44px; }
   .brand { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; }
-  .brand-mark { display: grid; place-items: center; width: 43px; height: 43px; border: 1px solid var(--accent); color: var(--text); font: 800 24px/1 Impact, "Arial Narrow", sans-serif; letter-spacing: -.07em; }
-  .brand-mark span { color: var(--accent); }
+  .brand-mark { display: block; width: 43px; height: 43px; overflow: hidden; border: 1px solid var(--accent); }
+  .brand-mark img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.85); transform-origin: 50% 34%; }
   .brand-copy { display: grid; gap: 3px; }
   .brand-copy strong { font-size: 13px; letter-spacing: .18em; }
   .brand-copy small { font-size: 9px; font-weight: 800; letter-spacing: .18em; color: var(--muted); }
@@ -328,6 +328,8 @@
     .model-card figcaption strong { font-size: 29px; }
     .contact-section { padding-block: 100px; }
     .contact-section h2 { font-size: clamp(61px, 13vw, 82px); }
+    .contact-action { gap: 10px; }
+    .contact-action strong { font-size: clamp(15px, 4.4vw, 19px); white-space: nowrap; }
     .footer-inner { flex-wrap: wrap; padding-block: 25px; font-size: 9px; }
     .footer-inner span:nth-child(2) { display: none; }
     .dialog-head, .dialog-foot { padding: 13px 15px; }

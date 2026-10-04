@@ -16,7 +16,7 @@ The site has no package dependencies or build step. `serve.mjs` supports byte-ra
 - The stills and posters are supplied assets from `Vyrova\Media\Games` and the highlight preview folders. Files in `media/` retain the original bytes with slugged names.
 - The technical descriptions were checked against the Boho Salon, Catalog Runway, Style Up, SystemsLab, and SlimeGame project source and documentation. Farm Soy descriptions are limited to what the supplied footage shows.
 - The 3D modelling section curates six models and props from the original GitHub portfolio.
-- The contact email is the public Vyrova studio address from its existing website. It is not presented as Harry’s personal email.
+- The contact email was supplied directly by Harry.
 
 Videos load only when a visitor plays them, or hovers a project image on a desktop pointer without reduced-motion or data-saving preferences. Only one clip plays at a time.
 
