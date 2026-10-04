@@ -1,0 +1,4 @@
+.deploy-repo/
+.rcs/
+.tmp/
+node_modules/

@@ -1,659 +1,190 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harry Smith | Game Developer</title>
-    <style>
-        :root {
-            --bg: #050505;
-            --surface: #0f0f0f;
-            --border: #222;
-            --text: #fff;
-            --text-muted: #888;
-            --accent: #ff6b00;
-            --accent-glow: rgba(255, 107, 0, 0.15);
-        }
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#0b0e10" />
+    <meta name="description" content="Harry builds Roblox games and the gameplay systems behind them. Explore Boho Salon, Catalog Runway, The Lab, Farm Soy, Style Up, Slime Game, and selected systems engineering." />
+    <title>Harry — Roblox Game Engineer</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preload" href="./media/stills/boho-salon-reception.png" as="image" />
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./script.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="scroll-progress" aria-hidden="true"></div>
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    <header class="site-header">
+      <div class="header-inner shell">
+        <a class="brand" href="#top" aria-label="Harry, back to top">
+          <span class="brand-mark" aria-hidden="true">H<span>.</span></span>
+          <span class="brand-copy"><strong>HARRY</strong><small>ROBLOX GAME ENGINEER</small></span>
+        </a>
+        <nav class="main-nav" aria-label="Primary navigation">
+          <a href="#work">Work</a>
+          <a href="#systems">Systems</a>
+          <a href="#approach">Approach</a>
+          <a href="#archive" class="nav-optional">Archive</a>
+          <a href="#contact" class="nav-mobile">Contact</a>
+        </nav>
+        <a class="header-contact" href="#contact">Get in touch <span aria-hidden="true">↗</span></a>
+      </div>
+    </header>
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 120px; /* Prevents nav from overlapping section titles */
-        }
-
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--bg);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 5px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent);
-        }
-
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            line-height: 1.5;
-            overflow-x: hidden;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 4rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            background: rgba(5, 5, 5, 0.85);
-            backdrop-filter: blur(12px);
-            z-index: 100;
-            border-bottom: 1px solid var(--border);
-        }
-
-        .brand {
-            font-size: 1.2rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .brand img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
-            object-fit: cover;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-links a {
-            color: var(--text-muted);
-            text-decoration: none;
-            font-size: 0.95rem;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: var(--text);
-        }
-
-        .contact-btn {
-            background: var(--text);
-            color: var(--bg);
-            padding: 0.5rem 1.2rem;
-            border-radius: 30px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.3s ease;
-        }
-
-        .contact-btn:hover {
-            background: var(--accent);
-            color: #fff;
-            box-shadow: 0 0 15px var(--accent-glow);
-        }
-
-        .hero {
-            padding: 14rem 4rem 6rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-            font-weight: 800;
-            letter-spacing: -2px;
-            margin-bottom: 1.5rem;
-            line-height: 1.1;
-            color: var(--text);
-        }
-
-        .hero p {
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            max-width: 600px;
-        }
-
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin: 4rem 4rem 2rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border);
-            max-width: 1400px;
-            letter-spacing: -0.5px;
-        }
-
-        .subsection-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            margin: 0 4rem 1.5rem;
-            max-width: 1400px;
-            color: var(--accent);
-        }
-
-        /* Center subsections based on container max-width */
-        @media (min-width: 1480px) {
-            .subsection-title {
-                margin: 0 auto 1.5rem;
-            }
-        }
-
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 350px;
-            gap: 1.5rem;
-            padding: 0 4rem 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .card:hover {
-            border-color: var(--accent);
-            transform: translateY(-8px);
-            box-shadow: 0 15px 35px var(--accent-glow);
-            z-index: 10;
-        }
-
-        .card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .card:hover img {
-            transform: scale(1.08);
-        }
-
-        .card-info {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            padding: 3rem 1.5rem 1.5rem;
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0) 100%);
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            pointer-events: none;
-            transform: translateY(10px);
-            opacity: 0.9;
-            transition: all 0.3s ease;
-        }
-
-        .card:hover .card-info {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
-        }
-
-        .span-2-col { grid-column: span 2; }
-        .span-2-row { grid-row: span 2; }
-
-        .scripting-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.5rem;
-            padding: 0 4rem 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .video-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            transition: all 0.3s ease;
-        }
-
-        .video-card:hover {
-            border-color: var(--accent);
-            transform: translateY(-5px);
-            box-shadow: 0 15px 35px var(--accent-glow);
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 100%;
-            padding-bottom: 56.25%;
-            background: #000;
-        }
-
-        .video-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
-        }
-
-        .video-info {
-            padding: 1.5rem;
-        }
-
-        .video-info h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-            color: var(--text);
-        }
-
-        .video-info p {
-            font-size: 0.95rem;
-            color: var(--text-muted);
-            line-height: 1.4;
-        }
-
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            grid-auto-rows: 250px;
-            gap: 1.5rem;
-            padding: 0 4rem 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .ui-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: 200px;
-            gap: 1.5rem;
-            padding: 0 4rem 4rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 999;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.92);
-            backdrop-filter: blur(10px);
-            align-items: center;
-            justify-content: center;
-            flex-direction: column;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .modal.active { opacity: 1; }
-
-        .modal-content {
-            max-width: 85%;
-            max-height: 80vh;
-            border-radius: 12px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
-            object-fit: contain;
-            transform: scale(0.95);
-            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .modal.active .modal-content { transform: scale(1); }
-
-        #caption {
-            margin-top: 20px;
-            font-size: 1.3rem;
-            font-weight: 500;
-            color: #fff;
-            letter-spacing: 0.5px;
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 30px;
-            right: 40px;
-            color: #888;
-            font-size: 45px;
-            font-weight: 300;
-            cursor: pointer;
-            transition: color 0.2s, transform 0.2s;
-            line-height: 1;
-        }
-
-        .close-btn:hover {
-            color: var(--accent);
-            transform: scale(1.1);
-        }
-
-        footer {
-            text-align: center;
-            padding: 4rem;
-            color: var(--text-muted);
-            border-top: 1px solid var(--border);
-            margin-top: 2rem;
-            font-weight: 500;
-        }
-
-        @media (max-width: 1024px) {
-            .bento-grid { grid-template-columns: repeat(2, 1fr); }
-            .span-2-col { grid-column: span 1; }
-            .span-2-row { grid-row: span 1; }
-            .hero h1 { font-size: 4rem; }
-            .ui-grid { grid-template-columns: repeat(2, 1fr); }
-            .nav-links { display: none; } /* Hide inner links on mobile for cleaner look */
-        }
-
-        @media (max-width: 768px) {
-            nav, .hero, .section-title, .subsection-title, .bento-grid, .scripting-grid, .gallery-grid, .ui-grid {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-            .subsection-title { margin-left: 1.5rem; margin-right: 1.5rem; }
-            .scripting-grid { grid-template-columns: 1fr; }
-            .bento-grid { grid-template-columns: 1fr; grid-auto-rows: 300px; }
-            .hero { padding-top: 10rem; }
-            .hero h1 { font-size: 3.2rem; }
-            .modal-content { max-width: 95%; }
-        }
-    </style>
-</head>
-<body>
-
-    <nav>
-        <div class="brand">
-            <img src="profile.png" alt="HS">
-            Harry Smith
+    <main id="main">
+      <section class="hero shell" id="top" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <p class="eyebrow"><span class="eyebrow-line"></span> GAME DEVELOPMENT / ROBLOX</p>
+          <h1 id="hero-title">Games you can <em>feel.</em><br />Systems you can <em>trust.</em></h1>
+          <p class="hero-intro">I’m Harry. I build Roblox games and the underlying systems that make them work — from moment-to-moment play to server architecture, data, and UI.</p>
+          <div class="hero-actions">
+            <a class="button button-accent" href="#work">Explore the games <span aria-hidden="true">↓</span></a>
+            <a class="button button-quiet video-link" href="./media/videos/game-development-reel-v3-gameplay-audio.mp4" data-title="Game development reel" data-poster="./media/posters/game-development-reel-v3.jpg">Watch 60s reel <span aria-hidden="true">▶</span></a>
+          </div>
+          <div class="hero-proof" aria-label="Portfolio at a glance">
+            <div><strong>06</strong><span>featured games</span></div>
+            <div><strong>04</strong><span>selected systems</span></div>
+            <div><strong>01</strong><span>development reel</span></div>
+          </div>
         </div>
-        
-        <!-- Interactive Navigation Links -->
-        <div class="nav-links">
-            <a href="#top-projects">Top Projects</a>
-            <a href="#scripting">Scripting</a>
-            <a href="#props">Props & Environments</a>
-            <a href="#ui-design">Interface Design</a>
+        <div class="hero-art">
+          <img src="./media/stills/boho-salon-reception.png" width="1328" height="747" alt="The reception area of Boho Salon, a Roblox game with a richly detailed pink interior" fetchpriority="high" />
+          <div class="hero-art-top"><span>REAL GAMEPLAY &amp; PROJECT MEDIA</span><span>001 / 006</span></div>
+          <div class="hero-art-bottom"><span class="hero-art-kicker">FEATURED WORLD</span><strong>BOHO SALON</strong><span>Role-based salon experience</span></div>
+          <a class="hero-art-play video-link" href="./media/videos/game-development-reel-v3-gameplay-audio.mp4" data-title="Game development reel" data-poster="./media/posters/game-development-reel-v3.jpg" aria-label="Watch the 60-second game development reel"><span aria-hidden="true">▶</span></a>
+        </div>
+      </section>
+
+      <section class="intro-strip" aria-label="Areas of work">
+        <div class="shell intro-strip-inner"><span>GAMEPLAY LOOPS</span><i aria-hidden="true"></i><span>ROBLOX ENGINEERING</span><i aria-hidden="true"></i><span>PLAYER EXPERIENCE</span><i aria-hidden="true"></i><span>TECHNICAL OWNERSHIP</span></div>
+      </section>
+
+      <section class="work-section shell" id="work" aria-labelledby="work-heading">
+        <div class="section-intro">
+          <p class="eyebrow"><span class="eyebrow-line"></span> 01 / FEATURED WORK</p>
+          <div class="section-heading-row"><h2 id="work-heading">The games are<br /><em>the work.</em></h2><p>Player experiences and prototypes, with the engineering behind the screen. Each project below is presented as a game first, with selected systems inside it.</p></div>
         </div>
 
-        <a href="mailto:harry.smith7624@gmail.com" class="contact-btn">Get in touch</a>
-    </nav>
+        <article class="flagship project" id="boho-salon" aria-labelledby="boho-title">
+          <div class="chapter-topline"><span>01 / 06</span><span>FLAGSHIP PROJECT</span><span>ROBLOX EXPERIENCE</span></div>
+          <div class="flagship-visual project-visual" data-preview="./media/videos/boho-salon-feature-highlights.mp4">
+            <img src="./media/stills/boho-salon-styling-floor.png" width="1328" height="747" alt="A row of styling stations on the Boho Salon floor" loading="lazy" />
+            <video class="hover-preview" muted loop playsinline preload="none" aria-hidden="true"></video>
+            <div class="visual-shade"></div>
+            <div class="visual-label"><span>BOHO SALON</span><small>Salon play, styling, and a living world</small></div>
+            <a class="visual-play video-link" href="./media/videos/boho-salon-feature-highlights.mp4" data-title="Boho Salon — feature highlights" data-poster="./media/posters/boho-salon-feature-highlights.jpg" aria-label="Watch Boho Salon feature highlights"><span aria-hidden="true">▶</span><span>WATCH THE GAME / 47 SEC</span></a>
+          </div>
+          <div class="flagship-detail">
+            <div><p class="project-type">GAME / SALON &amp; FASHION</p><h3 id="boho-title">Boho Salon</h3><p class="project-lead">A salon game with two ways to play: be the model, or provide the services. Styling, service stations, quests, saved looks, and runway moments make the space more than a showcase.</p><p class="project-note">My work includes the service architecture and a substantial catalog and saved-looks update, with server validation around who can style whom. The redevelopment also recovered selected game code from Studio into a careful Rojo workflow.</p></div>
+            <div class="case-file"><p class="case-label">INSIDE THE BUILD</p><ul><li><span>01</span> Role-based salon and service interactions</li><li><span>02</span> Hair catalog, previews, and saved looks</li><li><span>03</span> Quests, equipment, runway, and player data</li><li><span>04</span> Studio-to-Rojo code ownership</li></ul><p class="case-foot">Source-backed systems · Studio playtest evidence</p></div>
+          </div>
+          <div class="flagship-stills"><figure><img src="./media/stills/boho-salon-chair-gameplay.png" width="1328" height="747" alt="A player using a styling chair in Boho Salon" loading="lazy" /><figcaption>SERVICE GAMEPLAY <span>01 / 02</span></figcaption></figure><figure><img src="./media/stills/boho-salon-hair-catalog.png" width="1328" height="747" alt="The Boho Salon hair catalog interface" loading="lazy" /><figcaption>CATALOG &amp; LOOKS <span>02 / 02</span></figcaption></figure></div>
+        </article>
 
-    <div class="hero reveal">
-        <h1>Full Stack<br>Game Developer.</h1>
-        <p>17 Year old aspiring developer.</p>
-    </div>
-
-    <!-- Top Projects Section -->
-    <div id="top-projects" class="section-title reveal" style="margin-top: 0;">Top Projects</div>
-    <div class="bento-grid">
-         <div class="card span-2-col span-2-row reveal">
-            <img src="Needoh1.png" alt="Needoh">
-            <div class="card-info">
-                <div class="card-title">Needoh + Packaging</div>
+        <article class="project-row project" id="catalog-runway" aria-labelledby="catalog-title">
+          <div class="chapter-topline"><span>02 / 06</span><span>FASHION GAME</span><span>ROUND-BASED PLAY</span></div>
+          <div class="project-row-grid">
+            <div class="project-visual" data-preview="./media/videos/catalog-runway-feature-highlights.mp4">
+              <img src="./media/stills/catalog-runway-fashion-plaza.png" width="1328" height="747" alt="The colorful Catalog Runway fashion plaza" loading="lazy" />
+              <video class="hover-preview" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="visual-shade"></div>
+              <a class="visual-play video-link" href="./media/videos/catalog-runway-feature-highlights.mp4" data-title="Catalog Runway — feature highlights" data-poster="./media/posters/catalog-runway-feature-highlights.jpg" aria-label="Watch Catalog Runway feature highlights"><span aria-hidden="true">▶</span><span>WATCH GAMEPLAY / 42 SEC</span></a>
             </div>
+            <div class="project-copy"><p class="project-type">02 / CATALOG RUNWAY</p><h3 id="catalog-title">Dress for the theme. Own the runway.</h3><p class="project-lead">A multiplayer fashion game built around a complete round: theme selection, dressing, runway presentation, voting, results, and rewards.</p><p class="project-note">The code supports avatar and catalog customization, cosmetic progression, persistent currencies, and the server-run round flow.</p><div class="tags"><span>Themed rounds</span><span>Avatar catalog</span><span>Voting &amp; rewards</span></div><a class="text-link video-link" href="./media/videos/catalog-runway-feature-highlights.mp4" data-title="Catalog Runway — feature highlights" data-poster="./media/posters/catalog-runway-feature-highlights.jpg">See the project film <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <div class="project-evidence-strip"><figure><img src="./media/stills/catalog-runway-accessories-catalog.png" width="1328" height="747" alt="Accessory catalog within Catalog Runway" loading="lazy" /><figcaption>THE CATALOG <span>Avatar customization</span></figcaption></figure><figure><img src="./media/stills/catalog-runway-presentation.png" width="1328" height="747" alt="An avatar posing on the Catalog Runway stage" loading="lazy" /><figcaption>THE RUNWAY <span>Presentation and voting</span></figcaption></figure></div>
+        </article>
+
+        <article class="project-row project reverse" id="the-lab" aria-labelledby="lab-title">
+          <div class="chapter-topline"><span>03 / 06</span><span>SYSTEMS-LED GAME</span><span>ENGINEERING CASE STUDY</span></div>
+          <div class="project-row-grid">
+            <div class="project-visual" data-preview="./media/videos/the-lab-systems-highlights.mp4">
+              <img src="./media/posters/the-lab-systems-highlights.jpg" width="1920" height="1010" alt="A vehicle test bay inside The Lab" loading="lazy" />
+              <video class="hover-preview" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="visual-shade"></div>
+              <a class="visual-play video-link" href="./media/videos/the-lab-systems-highlights.mp4" data-title="The Lab — systems highlights" data-poster="./media/posters/the-lab-systems-highlights.jpg" aria-label="Watch The Lab systems highlights"><span aria-hidden="true">▶</span><span>WATCH GAMEPLAY / 47 SEC</span></a>
+            </div>
+            <div class="project-copy"><p class="project-type">03 / THE LAB</p><h3 id="lab-title">A playground for systems that interact.</h3><p class="project-lead">The Lab brings driving, building, inventory, combat, and travel experiments into one playable world. It is where the breadth of the engineering is most visible.</p><p class="project-note">Under the hood: a custom vehicle model and physics, server-validated construction with edit history, and a working inventory flow.</p><div class="tags"><span>Vehicle physics</span><span>Construction</span><span>Inventory</span></div><a class="text-link video-link" href="./media/videos/the-lab-systems-highlights.mp4" data-title="The Lab — systems highlights" data-poster="./media/posters/the-lab-systems-highlights.jpg">See the project film <span aria-hidden="true">↗</span></a></div>
+          </div>
+          <div class="lab-deep-dive" aria-label="The Lab engineering details"><div><span>01 / VEHICLES</span><h4>Physics with a feel.</h4><p>An original vehicle uses four raycast springs and a timed five-gate circuit for a test drive that has more than a start button.</p></div><div><span>02 / BUILDING</span><h4>Edits with authority.</h4><p>Placement and edits run through server validation, revision checks, and history so the world can be changed deliberately.</p></div><div><span>03 / INVENTORY</span><h4>Items with context.</h4><p>Collect, organize, split, equip, store, and drop flows connect the world interaction to a usable inventory.</p></div></div>
+        </article>
+
+        <article class="project-row project" id="farm-soy" aria-labelledby="farm-title">
+          <div class="chapter-topline"><span>04 / 06</span><span>GAMEPLAY WORLD</span><span>MULTIPLE CONNECTED SYSTEMS</span></div>
+          <div class="project-row-grid">
+            <div class="project-visual" data-preview="./media/videos/farm-soy-farming.mp4">
+              <img src="./media/posters/farm-soy-farming.jpg" width="1920" height="1010" alt="A player harvesting soy in Farm Soy with a task tracker and resource display" loading="lazy" />
+              <video class="hover-preview" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="visual-shade"></div>
+              <a class="visual-play video-link" href="./media/videos/farm-soy-farming.mp4" data-title="Farm Soy — farming" data-poster="./media/posters/farm-soy-farming.jpg" aria-label="Watch Farm Soy farming footage"><span aria-hidden="true">▶</span><span>WATCH FARMING / 16 SEC</span></a>
+            </div>
+            <div class="project-copy"><p class="project-type">04 / FARM SOY</p><h3 id="farm-title">Farming and combat in the same world.</h3><p class="project-lead">Farm Soy is a game, not a single mechanic. The footage shows tracked harvesting, resources, a weapon shop, and combat inside one shared play space.</p><p class="project-note">The original recording connects crop collection with weapon play. The two short films below focus on those different sides of the game.</p><div class="tags"><span>Farming tasks</span><span>Resources</span><span>Weapon shop</span></div><div class="project-actions"><a class="text-link video-link" href="./media/videos/farm-soy-farming.mp4" data-title="Farm Soy — farming" data-poster="./media/posters/farm-soy-farming.jpg">Farming clip <span aria-hidden="true">↗</span></a><a class="text-link video-link" href="./media/videos/farm-soy-gun-system.mp4" data-title="Farm Soy — combat" data-poster="./media/posters/farm-soy-gun-system.jpg">Combat clip <span aria-hidden="true">↗</span></a></div></div>
+          </div>
+        </article>
+
+        <article class="project-row project reverse" id="style-up" aria-labelledby="style-title">
+          <div class="chapter-topline"><span>05 / 06</span><span>FASHION GAME</span><span>STYLING &amp; RUNWAY</span></div>
+          <div class="project-row-grid">
+            <div class="project-visual" data-preview="./media/videos/style-up-styling-highlights.mp4">
+              <img src="./media/stills/style-up-runway-presentation.png" width="1328" height="747" alt="A styled avatar on the runway in Style Up" loading="lazy" />
+              <video class="hover-preview" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="visual-shade"></div>
+              <a class="visual-play video-link" href="./media/videos/style-up-styling-highlights.mp4" data-title="Style Up — styling highlights" data-poster="./media/posters/style-up-styling-highlights.jpg" aria-label="Watch Style Up styling highlights"><span aria-hidden="true">▶</span><span>WATCH GAMEPLAY / 31 SEC</span></a>
+            </div>
+            <div class="project-copy"><p class="project-type">05 / STYLE UP</p><h3 id="style-title">A styling flow built for the runway.</h3><p class="project-lead">Players explore a catalog, assemble a look against a timed theme, and take it to the runway for judging and results.</p><p class="project-note">The project includes catalog discovery and try-on, Global Fits, theme voting, timed dressing, and the presentation flow.</p><div class="tags"><span>Catalog discovery</span><span>Timed styling</span><span>Runway results</span></div><a class="text-link video-link" href="./media/videos/style-up-styling-highlights.mp4" data-title="Style Up — styling highlights" data-poster="./media/posters/style-up-styling-highlights.jpg">See the project film <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </article>
+
+        <article class="project-row project" id="slime-game" aria-labelledby="slime-title">
+          <div class="chapter-topline"><span>06 / 06</span><span>GAME PROTOTYPE</span><span>CRAFTING &amp; ORDERS</span></div>
+          <div class="project-row-grid">
+            <div class="project-visual" data-preview="./media/videos/slime-game-crafting-and-orders.mp4">
+              <img src="./media/stills/slime-game-shop-gameplay.png" width="1328" height="747" alt="The colorful shop environment in Slime Game" loading="lazy" />
+              <video class="hover-preview" muted loop playsinline preload="none" aria-hidden="true"></video>
+              <div class="visual-shade"></div>
+              <a class="visual-play video-link" href="./media/videos/slime-game-crafting-and-orders.mp4" data-title="Slime Game — crafting and orders" data-poster="./media/posters/slime-game-crafting-and-orders.jpg" aria-label="Watch Slime Game crafting and orders"><span aria-hidden="true">▶</span><span>WATCH GAMEPLAY / 47 SEC</span></a>
+            </div>
+            <div class="project-copy"><p class="project-type">06 / SLIME GAME</p><h3 id="slime-title">Take the order. Make the slime.</h3><p class="project-lead">A work-in-progress shop game with a tangible loop: read a customer order, combine ingredients, make slime, and manage stock for what comes next.</p><p class="project-note">The footage captures the crafting and order flow; the repository also contains shop purchasing, restocking, and plot services.</p><div class="tags"><span>Customer orders</span><span>Hands-on crafting</span><span>Stock &amp; shop</span></div><a class="text-link video-link" href="./media/videos/slime-game-crafting-and-orders.mp4" data-title="Slime Game — crafting and orders" data-poster="./media/posters/slime-game-crafting-and-orders.jpg">See the project film <span aria-hidden="true">↗</span></a></div>
+          </div>
+        </article>
+      </section>
+
+      <section class="systems-section" id="systems" aria-labelledby="systems-heading">
+        <div class="shell">
+          <div class="section-intro compact"><p class="eyebrow"><span class="eyebrow-line"></span> 02 / SYSTEMS ENGINEERING</p><div class="section-heading-row"><h2 id="systems-heading">Under the hood.</h2><p>Focused demonstrations of individual systems. They sit alongside the games above, where their purpose comes into view.</p></div></div>
+          <div class="systems-grid">
+            <article class="system-card"><div class="system-image"><img src="./media/posters/trading-system-two-player-demo.jpg" width="1920" height="1080" alt="Two player trading interfaces shown side by side" loading="lazy" /><a class="system-play video-link" href="./media/videos/trading-system-two-player-demo.mp4" data-title="Trading system — two-player demo" data-poster="./media/posters/trading-system-two-player-demo.jpg" aria-label="Watch trading system demo">▶</a></div><div class="system-card-copy"><span>01 / SOCIAL SYSTEMS</span><h3>Trading</h3><p>A two-player exchange with item offers, accept or decline decisions, and confirmation shown from both players’ views.</p></div></article>
+            <article class="system-card"><div class="system-image"><img src="./media/posters/backpack-inventory-highlights.jpg" width="1920" height="1010" alt="Pet backpack showing a searchable grid, item details and equip controls" loading="lazy" /><a class="system-play video-link" href="./media/videos/backpack-inventory-highlights.mp4" data-title="Backpack and inventory — highlights" data-poster="./media/posters/backpack-inventory-highlights.jpg" aria-label="Watch backpack and inventory demo">▶</a></div><div class="system-card-copy"><span>02 / COLLECTION SYSTEMS</span><h3>Backpack &amp; inventory</h3><p>A pet collection interface with search, item details, equip actions, and quick ways to manage a growing collection.</p></div></article>
+            <article class="system-card"><div class="system-image"><img src="./media/posters/breakables-pet-system.jpg" width="1920" height="1010" alt="Pets attacking a coin chest with a visible health bar" loading="lazy" /><a class="system-play video-link" href="./media/videos/breakables-pet-system.mp4" data-title="Breakables — pet system" data-poster="./media/posters/breakables-pet-system.jpg" aria-label="Watch breakables system demo">▶</a></div><div class="system-card-copy"><span>03 / WORLD INTERACTION</span><h3>Breakables</h3><p>Pets target world chests while health and reward feedback make progress visible in the scene.</p></div></article>
+            <article class="system-card"><div class="system-image"><img src="./media/posters/egg-system-hatching-highlights.jpg" width="1920" height="1010" alt="An egg ready to hatch beside a pet and a reward preview" loading="lazy" /><a class="system-play video-link" href="./media/videos/egg-system-hatching-highlights.mp4" data-title="Egg system — hatching highlights" data-poster="./media/posters/egg-system-hatching-highlights.jpg" aria-label="Watch egg and hatching system demo">▶</a></div><div class="system-card-copy"><span>04 / REWARD LOOP</span><h3>Eggs &amp; hatching</h3><p>An egg opening flow with costs, pet previews, and collection rewards presented at the point of play.</p></div></article>
+          </div>
         </div>
-        
-         <div class="card span-2-col span-2-row reveal">
-            <img src="Needoh2.png" alt="Needoh2">
-            <div class="card-info">
-                <div class="card-title">Needoh</div>
-            </div>
+      </section>
+
+      <section class="approach-section shell" id="approach" aria-labelledby="approach-heading">
+        <div class="section-intro compact"><p class="eyebrow"><span class="eyebrow-line"></span> 03 / TECHNICAL APPROACH</p><div class="section-heading-row"><h2 id="approach-heading">Play first.<br /><em>Structure underneath.</em></h2><p>The most compelling interface is a game that keeps working. These patterns are visible in the repository-backed projects, especially Boho Salon, Catalog Runway, and The Lab.</p></div></div>
+        <div class="approach-flow" aria-label="Typical game system flow"><span>PLAYER ACTION</span><b aria-hidden="true">→</b><span>CLIENT INTERFACE</span><b aria-hidden="true">→</b><span>NETWORK VALIDATION</span><b aria-hidden="true">→</b><span>SERVER SERVICES</span><b aria-hidden="true">→</b><span>PLAYER DATA</span></div>
+        <div class="approach-grid"><article><span>01 / AUTHORITY</span><h3>Rules belong on the server.</h3><p>Game actions are checked where the game state lives. Boho’s styling and catalog work validates the player and target; The Lab’s building system validates edits and revisions.</p></article><article><span>02 / OWNERSHIP</span><h3>Clear code and Studio boundaries.</h3><p>Rojo and Git own the code that can be safely mapped, while authored worlds and assets remain in Studio. That boundary keeps iteration deliberate across large experiences.</p></article><article><span>03 / CONTINUITY</span><h3>Systems designed to keep state.</h3><p>Catalog Runway and Boho Salon use service layers and profile-backed player data for progression and cosmetics. The interface stays connected to the systems behind it.</p></article></div>
+      </section>
+
+      <section class="archive-section" id="archive" aria-labelledby="archive-heading">
+        <div class="shell">
+          <div class="section-intro compact"><p class="eyebrow"><span class="eyebrow-line"></span> 04 / VISUAL ARCHIVE</p><div class="section-heading-row"><h2 id="archive-heading">Beyond the code.</h2><p>A small selection of earlier environments, props, and interface work from the original portfolio, alongside a more recent build showcase.</p></div></div>
+          <div class="archive-grid">
+            <figure><img src="./H1.png" width="1200" height="900" alt="Modern house beside reflective water, an earlier environment render" loading="lazy" /><figcaption>EARLIER WORK <span>Modern house by the lake</span></figcaption></figure>
+            <figure><img src="./ak47-post.png" width="1920" height="1080" alt="A rendered rifle prop laid on a workbench" loading="lazy" /><figcaption>EARLIER WORK <span>Prop render and post effects</span></figcaption></figure>
+            <figure><img src="./media/stills/city-build-showcase-city-overview.png" width="1328" height="747" alt="Wide view of a Roblox city build" loading="lazy" /><figcaption>BUILD SHOWCASE <span>City overview</span></figcaption></figure>
+            <figure class="archive-ui"><img src="./ui_example3.png" width="441" height="519" alt="Colorful earlier game shop interface with packs and upgrades" loading="lazy" /><figcaption>EARLIER WORK <span>Game shop interface</span></figcaption></figure>
+          </div>
         </div>
-        
-        <div class="card span-2-col span-2-row reveal">
-            <img src="Prada.png" alt="Prada">
-            <div class="card-info">
-                <div class="card-title">Prada</div>
-            </div>
-        </div>
+      </section>
 
-        <div class="card span-2-col reveal">
-            <img src="VilanelleBox.png" alt="Vilanelle In a box">
-            <div class="card-info">
-                <div class="card-title">Vilanelle In a box (Killing Eve)</div>
-            </div>
-        </div>
+      <section class="contact-section shell" id="contact" aria-labelledby="contact-heading"><p class="eyebrow"><span class="eyebrow-line"></span> 05 / CONTACT</p><div class="contact-grid"><div><h2 id="contact-heading">Let’s build something <em>playable.</em></h2><p>For Roblox game development, systems work, or a project that needs a stronger technical foundation, get in touch through Vyrova.</p></div><a class="contact-action" href="mailto:hello@vyrova.com"><span>START A CONVERSATION</span><strong>hello@vyrova.com</strong><span aria-hidden="true">↗</span></a></div></section>
+    </main>
 
-        <div class="card reveal">
-            <img src="VilanelleStudio.png" alt="Vilanelle studio render">
-            <div class="card-info">
-                <div class="card-title">Vilanelle studio render</div>
-            </div>
-        </div>
+    <footer class="site-footer"><div class="shell footer-inner"><span>© <span id="year">2026</span> HARRY</span><span>ROBLOX GAME DEVELOPMENT PORTFOLIO</span><a href="#top">BACK TO TOP ↑</a></div></footer>
 
-        <div class="card reveal">
-            <img src="RazorSiren.png" alt="Razer Seiren">
-            <div class="card-info">
-                <div class="card-title">Razer Seiren Mic</div>
-            </div>
-        </div>
-
-        <div class="card span-2-col reveal">
-            <img src="college.png" alt="College Building Recreation">
-            <div class="card-info">
-                <div class="card-title">College Building Recreation</div>
-            </div>
-        </div>
-        
-        <div class="card span-2-col reveal">
-            <img src="squidgame.png" alt="Squid Game Lobby">
-            <div class="card-info">
-                <div class="card-title">Squid Game Lobby</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scripting Section -->
-    <div id="scripting" class="section-title reveal">Lua Scripting & Game Development</div>
-    
-    <!-- Subsection 1: Complete Pet System -->
-    <div class="subsection-title reveal">Complete Pet System Core Mechanics</div>
-    <div class="scripting-grid">
-        <div class="video-card reveal">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/ecz7FouUMWk" title="Pet Trading System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <h3>Pet Trading System</h3>
-                <p>Secure player-to-player trading interface built with clean modular Lua architecture.</p>
-            </div>
-        </div>
-
-        <div class="video-card reveal">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/1q-68IiMzbM" title="Egg Hatching System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <h3>Egg Hatching System</h3>
-                <p>Simple clean optimised Egg Hatching system </p>
-            </div>
-        </div>
-
-        <div class="video-card reveal">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/6jjvNeK5CwY" title="Backpack / Inventory System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <h3>Backpack / Inventory</h3>
-                <p>Dynamic grid-based inventory with a good range of QOL features</p>
-            </div>
-        </div>
-
-        <div class="video-card reveal">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/78Xaa6-LSWk" title="Breakables System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <h3>Breakables System</h3>
-                <p>Optimised Modular breakable System</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Subsection 2: Standalone Systems -->
-    <div class="subsection-title reveal">Standalone Systems & UI Logic</div>
-    <div class="scripting-grid">
-        <div class="video-card reveal">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/lSP9uoyIPro" title="Simple Pet System" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <h3>Pet Following Mechanics</h3>
-                <p>Developed in under 24 hours utilizing professional, highly optimized system architecture.</p>
-            </div>
-        </div>
-
-        <div class="video-card reveal">
-            <div class="video-wrapper">
-                <iframe src="https://www.youtube.com/embed/BzzoTnZilYY" title="Dynamic Main Menu" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            </div>
-            <div class="video-info">
-                <h3>Dynamic Main Menu</h3>
-                <p>An interactive, dynamically structured main menu user interface showcasing clean transitions.</p>
-            </div>
-        </div>
-    </div>
-
-    <!-- Props Section -->
-    <div id="props" class="section-title reveal">Props & Environments</div>
-    <div class="gallery-grid">
-        <div class="card reveal"><img src="ak47-post.png" alt="AK47 Post Effects"><div class="card-info"><div class="card-title">AK47 (Post Effects in Pixlr)</div></div></div>
-        <div class="card reveal"><img src="ak47-pre.png" alt="AK47 Pre Render"><div class="card-info"><div class="card-title">AK47 (Pre-Render)</div></div></div>
-        <div class="card reveal"><img src="SimulatorSet.png" alt="Simulator Set"><div class="card-info"><div class="card-title">Simulator Set for distopian game</div></div></div>
-        <div class="card reveal"><img src="sword.png" alt="Stylized Fantasy Sword"><div class="card-info"><div class="card-title">Stylized Fantasy Sword</div></div></div>
-        <div class="card reveal"><img src="sword2.png" alt="Another sword"><div class="card-info"><div class="card-title">Another sword</div></div></div>
-        <div class="card reveal"><img src="Knife1.png" alt="Quick random little knife"><div class="card-info"><div class="card-title">Quick random little knife</div></div></div>
-        <div class="card reveal"><img src="H1.png" alt="Modern House by lake"><div class="card-info"><div class="card-title">Modern House by lake</div></div></div>
-        <div class="card reveal"><img src="C1.png" alt="My First Commission"><div class="card-info"><div class="card-title">My First Commission</div></div></div>
-        <div class="card reveal"><img src="Arch2.png" alt="Adobe Architecture Recreation"><div class="card-info"><div class="card-title">Adobe Architecture Recreation</div></div></div>
-        <div class="card reveal"><img src="house.png" alt="Stylized Urban House"><div class="card-info"><div class="card-title">Stylized Urban House</div></div></div>
-        <div class="card reveal"><img src="Bot.png" alt="Robot"><div class="card-info"><div class="card-title">Robot</div></div></div>
-        <div class="card reveal"><img src="Musket.png" alt="Solid Gold Musket"><div class="card-info"><div class="card-title">Solid Gold Musket</div></div></div>
-    </div>
-
-    <!-- UI Section -->
-    <div id="ui-design" class="section-title reveal">Interface Design</div>
-    <div class="ui-grid">
-        <div class="card reveal"><img src="ui_example1.png" alt="Squid Game UI Example"><div class="card-info"><div class="card-title">Squid Game UI Example</div></div></div>
-        <div class="card reveal"><img src="ui_example2.png" alt="Game Passes UI"><div class="card-info"><div class="card-title">Game Passes UI</div></div></div>
-        <div class="card reveal"><img src="ui_example3.png" alt="Shop UI"><div class="card-info"><div class="card-title">Shop UI</div></div></div>
-        <div class="card reveal"><img src="ui_example4.png" alt="Packs UI"><div class="card-info"><div class="card-title">Packs UI</div></div></div>
-    </div>
-
-    <footer class="reveal">
-        harry.smith7624@gmail.com
-    </footer>
-
-    <div id="imageModal" class="modal">
-        <span class="close-btn">&times;</span>
-        <img class="modal-content" id="modalImage" alt="">
-        <div id="caption"></div>
-    </div>
-
-    <script>
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100; 
-
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); 
-
-        const modal = document.getElementById("imageModal");
-        const modalImg = document.getElementById("modalImage");
-        const captionText = document.getElementById("caption");
-        const closeBtn = document.querySelector(".close-btn");
-        const cards = document.querySelectorAll(".card");
-
-        cards.forEach(card => {
-            card.addEventListener("click", () => {
-                const img = card.querySelector("img");
-                const title = card.querySelector(".card-title");
-                
-                if(img) {
-                    modal.style.display = "flex";
-                    setTimeout(() => modal.classList.add("active"), 10);
-                    modalImg.src = img.src;
-                    captionText.innerText = title ? title.innerText : "";
-                    document.body.style.overflow = "hidden"; 
-                }
-            });
-        });
-
-        const closeModal = () => {
-            modal.classList.remove("active");
-            setTimeout(() => {
-                modal.style.display = "none";
-                document.body.style.overflow = "auto"; 
-            }, 300); 
-        };
-
-        closeBtn.addEventListener("click", closeModal);
-
-        modal.addEventListener("click", (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
-        });
-
-        document.addEventListener("keydown", (e) => {
-            if (e.key === "Escape" && modal.style.display === "flex") {
-                closeModal();
-            }
-        });
-    </script>
-</body>
+    <dialog class="video-dialog" id="video-dialog" aria-labelledby="dialog-title"><div class="dialog-head"><div><span class="dialog-kicker">PROJECT FOOTAGE</span><h2 id="dialog-title">Project video</h2></div><button class="dialog-close" type="button" aria-label="Close video">✕</button></div><video id="dialog-player" controls playsinline preload="none"></video><div class="dialog-foot"><span>Captured in Roblox · Use video controls for sound and fullscreen</span><a id="dialog-open-file" href="#" target="_blank" rel="noopener noreferrer">Open video file ↗</a></div></dialog>
+  </body>
 </html>
