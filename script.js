@@ -87,7 +87,7 @@ window.addEventListener('scroll', () => {
 updateProgress();
 
 const navLinks = [...document.querySelectorAll('.main-nav a')];
-const watchedSections = ['work', 'systems', 'approach', 'archive']
+const watchedSections = ['work', 'systems', 'approach', 'modelling', 'contact']
   .map((id) => document.getElementById(id))
   .filter(Boolean);
 if ('IntersectionObserver' in window) {
